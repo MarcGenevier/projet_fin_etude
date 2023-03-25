@@ -1,45 +1,61 @@
-Nom du projet
+README.md
+Port Scanner et analyseur de vulnérabilités
 
-Une brève description du projet et de ses fonctionnalités.
-Table des matières
+Ce projet est un scanner de ports et un analyseur de vulnérabilités en Python, qui utilise Nmap pour scanner les ports, récupère les dernières CVE (Vulnérabilités Communes Exposées) et exécute SQLMap pour détecter les injections SQL.
+Fichiers
 
-    Installation
-    Utilisation
-    Contribuer
-    Licence
+Le projet contient deux fichiers principaux :
 
-Installation
+    main.py : Fichier principal du programme contenant le menu, les fonctions pour récupérer les entrées utilisateur et les fonctions pour afficher les résultats.
+    scan.py : Fichier contenant les fonctions pour scanner les ports, récupérer les dernières CVE et exécuter SQLMap.
 
-Décrivez les étapes nécessaires pour installer votre projet. Vous pouvez inclure des commandes pour cloner le dépôt, installer des dépendances, etc.
+Dépendances
 
-Exemple de commande
+Pour faire fonctionner ce scanner de ports, vous devrez installer les éléments suivants sur Linux :
 
-Utilisation
+    #!/bin/bash
 
-Expliquez comment utiliser votre projet. Cela peut inclure des instructions pour exécuter l'application, des exemples de code, des captures d'écran, etc.
+    # Mise à jour des paquets
+    sudo apt-get update
+    sudo apt-get upgrade
 
-rust
+    # Installation des dépendances avec apt-get
+    sudo apt-get install -y sqlmap python3 proxychains 
 
-Exemple d'instructions
+    # Installation des dépendances avec pip
+    pip install requests sqlmap proxychains python-nmap
 
-Contribuer
+Fonctions
+main.py
 
-Expliquez comment les gens peuvent contribuer à votre projet. Cela peut inclure des instructions pour signaler des bugs, proposer des fonctionnalités, envoyer des pull requests, etc.
+    get_user_input() -> Tuple[str, int, int] :
+        Description : Récupère l'entrée de l'utilisateur (nom de domaine ou adresse IP et plage de ports à scanner).
+        Arguments : Aucun
+        Return : Un tuple contenant le nom de domaine ou l'adresse IP, le port minimum et le port maximum de la plage de ports à scanner.
 
-rust
+    ask_for_proxychains() -> bool :
+        Description : Demande à l'utilisateur s'il souhaite utiliser ProxyChains pour récupérer l'adresse IP publique.
+        Arguments : Aucun
+        Return : Un booléen indiquant si l'utilisateur souhaite utiliser ProxyChains.
 
-Exemple d'instructions
+    get_public_ip(use_proxychains: bool = False) -> Optional[str] :
+        Description : Récupère l'adresse IP publique à l'aide de dig (commande Linux).
+        Arguments : use_proxychains (bool) - Indique si ProxyChains doit être utilisé pour récupérer l'adresse IP publique (facultatif, par défaut : False).
+        Return : Une chaîne de caractères représentant l'adresse IP publique ou None en cas d'échec.
 
-Licence
+scan.py
 
-Indiquez la licence sous laquelle votre projet est publié.
+    scan_ports(domain_or_ip: str) -> Dict[str, Any] :
+        Description : Scan les ports ouverts d'un nom de domaine ou d'une adresse IP.
+        Arguments : domain_or_ip (str) - Nom de domaine ou adresse IP à scanner.
+        Return : Un dictionnaire contenant les résultats du scan Nmap.
 
-Exemple de licence
+    print_nmap_results(results: Dict[str, Any]) -> None :
+        Description : Affiche les résultats du scan Nmap.
+        Arguments : results (Dict) - Dictionnaire contenant les résultats du scan Nmap.
+        Return : None
 
-Contact
-
-Donnez les informations de contact si les gens ont des questions ou des commentaires sur votre projet.
-
-Exemple de contact
-
-Ceci est juste un exemple de modèle de README en français, vous pouvez personnaliser et ajouter plus de sections si nécessaire pour répondre aux besoins spécifiques de votre projet.
+    get_latest_cve(num_cve: int = 10) -> List[Dict[str, str]] :
+        Description : Récupère les dernières CVE à partir de l'API NVD.
+        Arguments : num_cve (int) - Nombre de CVE à récupérer (facultatif, par défaut : 10).
+        Return : Une liste de dictionnaires contenant l'ident
