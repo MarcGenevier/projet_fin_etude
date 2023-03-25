@@ -135,7 +135,7 @@ def main():
             break
         else:
             # Message d'erreur en cas de choix invalide
-            print("Choix invalide. Veuillez choisir une option entre 1 et 3.")
+            print("Choix invalide. Veuillez choisir une option entre 1 et 4.")
 
 
 #  --------------------------------------------------------------------------
