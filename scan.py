@@ -16,7 +16,7 @@ def scan_ports(domain_or_ip):
         print(f"Impossible de résoudre le nom de domaine {domain_or_ip}")
         return []
 
-    return nm.scan(ip_add_entered, arguments="-A -O -sV")
+    return nm.scan(ip_add_entered, arguments="-A")
 
 #  --------------------------------------------------------------------------
 
@@ -59,7 +59,7 @@ def get_latest_cve(num_cve=10):
 def run_sqlmap(target):
     try:
         # Construire la commande SQLMap avec des options pour détecter les injections SQL
-        sqlmap_command = f"sqlmap -u  {target} --smart --level=5 --risk=3 --batch"
+        sqlmap_command = f"sqlmap -u  {target} --crawl=2 --batch"
         print(f"\nExécution de SQLMap sur {target}...")
         # Lancer la commande en utilisant subprocess.Popen
         process = subprocess.Popen(sqlmap_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
