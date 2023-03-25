@@ -59,3 +59,8 @@ scan.py
         Description : Récupère les dernières CVE à partir de l'API NVD.
         Arguments : num_cve (int) - Nombre de CVE à récupérer (facultatif, par défaut : 10).
         Return : Une liste de dictionnaires contenant l'ident
+
+
+Remarque
+
+Ce programme a été développé à des fins éducatives et de sensibilisation à la sécurité. Ne l'utilisez pas pour scanner des systèmes sans autorisation.
