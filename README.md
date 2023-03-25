@@ -23,7 +23,7 @@ Pour faire fonctionner ce scanner de ports, vous devrez installer les éléments
     sudo apt-get install -y sqlmap python3 proxychains 
 
     # Installation des dépendances avec pip
-    pip install requests sqlmap proxychains python-nmap
+    pip install requests sqlmap 
 
 Fonctions
 main.py
