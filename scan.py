@@ -16,7 +16,7 @@ def scan_ports(domain_or_ip):
         print(f"Impossible de résoudre le nom de domaine {domain_or_ip}")
         return []
 
-    return nm.scan(ip_add_entered, arguments="-A")
+    return nm.scan(ip_add_entered, arguments="-A -p1-65535 -O -sV")
 
 #  --------------------------------------------------------------------------
 
