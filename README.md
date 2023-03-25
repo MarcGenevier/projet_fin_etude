@@ -13,7 +13,7 @@ Dépendances
 
 Pour faire fonctionner ce scanner de ports, vous devrez installer les éléments suivants sur Linux :
 
-#!/bin/bash
+    #!/bin/bash
 
     # Mise à jour des paquets
     sudo apt-get update
