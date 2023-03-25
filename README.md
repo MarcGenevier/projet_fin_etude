@@ -13,9 +13,16 @@ Dépendances
 
 Pour faire fonctionner ce scanner de ports, vous devrez installer les éléments suivants sur Linux :
 
-    Python 3 : sudo apt install python3
-    Nmap : pip install nmap
-    Requests : pip install requests
+#!/bin/bash
+
+    # Mise à jour des paquets
+    sudo apt-get update
+
+    # Installation des dépendances avec apt-get
+    sudo apt-get install -y sqlmap python3 proxychains python-nmap
+
+    # Installation des dépendances avec pip
+    pip install requests sqlmap proxychains python-nmap
 
 Fonctions
 main.py
