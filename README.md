@@ -17,6 +17,7 @@ Pour faire fonctionner ce scanner de ports, vous devrez installer les éléments
 
     # Mise à jour des paquets
     sudo apt-get update
+    sudo apt-get upgrade
 
     # Installation des dépendances avec apt-get
     sudo apt-get install -y sqlmap python3 proxychains 
